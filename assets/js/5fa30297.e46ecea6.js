@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwebsite=globalThis.webpackChunkwebsite||[]).push([[804],{902(e){e.exports=JSON.parse('{"authors":[{"name":"lencx","title":"Web \u2022 Rust \u2022 Tauri \u2022 Electron","url":"https://github.com/lencx","imageURL":"https://github.com/lencx.png","key":"lencx","page":null,"count":1}]}')}}]);
