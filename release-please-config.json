@@ -14,7 +14,7 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "noi-ai-agent",
+      "package-name": "noi-ai-agent-tests",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
