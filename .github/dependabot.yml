@@ -113,7 +113,7 @@ updates:
           - "*"
 
   - package-ecosystem: docker
-    directory: /
+    directory: /frontend
     schedule:
       interval: monthly
     open-pull-requests-limit: 2
