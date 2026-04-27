@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://noib.app/Noi-Ai-agent/blog</id>
+    <title>Noi Blog</title>
+    <updated>2026-04-27T12:56:21.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://noib.app/Noi-Ai-agent/blog"/>
+    <subtitle>Noi Blog</subtitle>
+    <icon>https://noib.app/Noi-Ai-agent/static/readme/noi.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Hello, Noi]]></title>
+        <id>https://noib.app/Noi-Ai-agent/blog/noi</id>
+        <link href="https://noib.app/Noi-Ai-agent/blog/noi"/>
+        <updated>2026-04-27T12:56:21.000Z</updated>
+        <summary type="html"><![CDATA[🚀 Power Your World with AI - Explore, Extend, Empower.]]></summary>
+        <content type="html"><![CDATA[<p>🚀 Power Your World with AI - Explore, Extend, Empower.</p>]]></content>
+        <author>
+            <name>lencx</name>
+            <uri>https://github.com/lencx</uri>
+        </author>
+    </entry>
+</feed>
