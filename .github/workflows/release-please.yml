@@ -47,7 +47,7 @@ jobs:
       tag_name: ${{ steps.release.outputs.tag_name }}
       upload_url: ${{ steps.release.outputs.upload_url }}
     steps:
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         id: release
         with:
           # Uses release-please-config.json in the repo root
@@ -60,7 +60,7 @@ jobs:
     if: ${{ needs.release-please.outputs.release_created == 'true' }}
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # ------------------------------------------------------------------ #
       # ADD YOUR BUILD / PUBLISH STEPS BELOW                                #
@@ -68,7 +68,7 @@ jobs:
 
       # Example: build the Docusaurus docs and attach as a release asset
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '18'
 
@@ -84,7 +84,7 @@ jobs:
           zip -r docs-${{ needs.release-please.outputs.tag_name }}.zip website/build
 
       - name: Upload docs to release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
           files: docs-${{ needs.release-please.outputs.tag_name }}.zip
