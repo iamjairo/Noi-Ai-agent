@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "node",
+  "changelog-sections": [
+    { "type": "feat",     "section": "✨ Features"        },
+    { "type": "fix",      "section": "🐛 Bug Fixes"       },
+    { "type": "perf",     "section": "⚡ Performance"     },
+    { "type": "revert",   "section": "⏪ Reverts"         },
+    { "type": "docs",     "section": "📖 Documentation"   },
+    { "type": "refactor", "section": "♻️ Refactors"      },
+    { "type": "chore",    "section": "🔧 Miscellaneous"   },
+    { "type": "deps",     "section": "📦 Dependencies"    }
+  ],
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "noi-ai-agent",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false
+    }
+  }
+}
