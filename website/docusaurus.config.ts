@@ -39,6 +39,22 @@ const config: Config = {
           postcssOptions.plugins.push(require('autoprefixer'));
           return postcssOptions;
         },
+        configureWebpack(config: import('webpack').Configuration) {
+          // webpackbar (a @docusaurus/core dependency) internally passes options
+          // to webpack's ProgressPlugin that webpack ≥5.65 rejects as unknown
+          // (name, color, reporters, reporter). Remove those plugin instances to
+          // prevent the ValidationError during `docusaurus build`, then add a
+          // plain ProgressPlugin that uses only the supported webpack 5 API.
+          if (Array.isArray(config.plugins)) {
+            config.plugins = config.plugins.filter(
+              (p) => p?.constructor?.name !== 'WebpackBarPlugin',
+            );
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
+            const webpack = require('webpack') as typeof import('webpack');
+            config.plugins.push(new webpack.ProgressPlugin());
+          }
+          return {};
+        },
       }
     }
   ],

@@ -49,6 +49,7 @@
     "node": ">=18.0"
   },
   "resolutions": {
-    "webpack": "5.105.0"
+    "webpack": "5.106.2",
+    "minimatch": "3.1.5"
   }
 }
