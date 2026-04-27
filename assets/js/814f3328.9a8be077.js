@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwebsite=globalThis.webpackChunkwebsite||[]).push([[472],{5513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Hello, Noi","permalink":"/Noi-Ai-agent/blog/noi","unlisted":false,"date":"2026-04-27T17:11:10.000Z"}]}')}}]);
