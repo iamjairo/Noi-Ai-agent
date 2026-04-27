@@ -1,0 +1,96 @@
+# Automated Release Workflow using release-please
+#
+# HOW IT WORKS
+# ============
+# 1. Every push to `main` that contains conventional commits (feat:, fix:, chore:, etc.)
+#    causes release-please to open (or update) a "Release PR" automatically.
+#    The PR title is the next version, the body is the auto-generated CHANGELOG entry.
+#
+# 2. When you MERGE the Release PR, release-please creates a GitHub Release + git tag
+#    (e.g. v1.2.0) and updates CHANGELOG.md.
+#
+# 3. The `on-release` job runs only after a real release is created (step 2).
+#    Add your actual build/publish steps there (e.g. build the Tauri desktop app,
+#    publish to npm, upload artefacts to the release, deploy docs, etc.).
+#
+# CONVENTIONAL COMMIT CHEAT-SHEET (controls version bump)
+# =========================================================
+#   feat: <msg>          → minor bump  (1.x.0)
+#   fix: <msg>           → patch bump  (1.0.x)
+#   feat!: <msg>         → major bump  (x.0.0)   ← breaking change
+#   BREAKING CHANGE: ... → major bump
+#   chore:/docs:/refactor: etc. → no bump (appear in CHANGELOG only)
+#
+# REUSE AS A TEMPLATE
+# ====================
+# Copy this file (and release-please-config.json + .release-please-manifest.json)
+# into any repo.  Adjust the `packages` section in release-please-config.json to
+# match that repo's package.json path(s).
+
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  # ── Step 1: open / update the Release PR ──────────────────────────────────
+  release-please:
+    runs-on: ubuntu-22.04
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      upload_url: ${{ steps.release.outputs.upload_url }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          # Uses release-please-config.json in the repo root
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  # ── Step 2: post-release build / publish (runs ONLY when a release is cut) ─
+  on-release:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      # ------------------------------------------------------------------ #
+      # ADD YOUR BUILD / PUBLISH STEPS BELOW                                #
+      # ------------------------------------------------------------------ #
+
+      # Example: build the Docusaurus docs and attach as a release asset
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build docs
+        working-directory: website
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+      # Example: zip the docs build and upload to the GitHub Release
+      - name: Package docs artifact
+        run: |
+          zip -r docs-${{ needs.release-please.outputs.tag_name }}.zip website/build
+
+      - name: Upload docs to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.release-please.outputs.tag_name }}
+          files: docs-${{ needs.release-please.outputs.tag_name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ------------------------------------------------------------------ #
+      # END OF EXAMPLE – remove or replace the steps above with your own   #
+      # ------------------------------------------------------------------ #

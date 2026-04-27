@@ -1,0 +1,128 @@
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - python
+    commit-message:
+      prefix: deps(python)
+    groups:
+      python-all:
+        patterns:
+          - "*"
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - javascript
+    commit-message:
+      prefix: deps(npm)
+    groups:
+      react-ecosystem:
+        patterns:
+          - react
+          - react-dom
+          - "@testing-library/*"
+        update-types:
+          - minor
+          - patch
+      tauri-frontend:
+        patterns:
+          - "@tauri-apps/*"
+        update-types:
+          - minor
+          - patch
+      npm-misc:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - react
+          - react-dom
+          - "@tauri-apps/*"
+          - "@testing-library/*"
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - rust
+    commit-message:
+      prefix: deps(cargo)
+    groups:
+      tauri-backend:
+        patterns:
+          - "tauri*"
+        update-types:
+          - minor
+          - patch
+      cargo-misc:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "tauri*"
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: deps(actions)
+    groups:
+      github-actions-all:
+        patterns:
+          - "*"
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 2
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: deps(docker)
+    groups:
+      docker-backend:
+        patterns:
+          - "*"
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 2
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: deps(docker)
+    groups:
+      docker-frontend:
+        patterns:
+          - "*"
