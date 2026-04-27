@@ -57,7 +57,7 @@ jobs:
   # ── Step 2: post-release build / publish (runs ONLY when a release is cut) ─
   on-release:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
