@@ -78,19 +78,42 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
 
-      # Example: zip the docs build and upload to the GitHub Release
+      # Zip the docs build for the GitHub Release
       - name: Package docs artifact
         run: |
           zip -r docs-${{ needs.release-please.outputs.tag_name }}.zip website/build
 
-      - name: Upload docs to release
+      # Bundle the Noi content pack (configs, extensions, prompts, locales,
+      # resources) — this is the actual payload users of this fork load into
+      # the upstream Noi Electron app. Produce both .zip and .tar.gz so users
+      # on any OS can extract without extra tooling.
+      - name: Package Noi extension/content bundle
+        run: |
+          TAG="${{ needs.release-please.outputs.tag_name }}"
+          STAGE="noi-extensions-${TAG}"
+          mkdir -p "${STAGE}"
+          cp -R configs extensions prompts locales resources README.md "${STAGE}/"
+          # Embed a manifest so consumers know what they got
+          cat > "${STAGE}/MANIFEST.json" <<EOF
+          {
+            "name": "noi-extensions",
+            "tag": "${TAG}",
+            "commit": "${GITHUB_SHA}",
+            "built_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "contents": ["configs", "extensions", "prompts", "locales", "resources"]
+          }
+          EOF
+          zip -r "noi-extensions-${TAG}.zip" "${STAGE}"
+          tar -czf "noi-extensions-${TAG}.tar.gz" "${STAGE}"
+          ls -lh "noi-extensions-${TAG}".*
+
+      - name: Upload artifacts to release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
-          files: docs-${{ needs.release-please.outputs.tag_name }}.zip
+          files: |
+            docs-${{ needs.release-please.outputs.tag_name }}.zip
+            noi-extensions-${{ needs.release-please.outputs.tag_name }}.zip
+            noi-extensions-${{ needs.release-please.outputs.tag_name }}.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # ------------------------------------------------------------------ #
-      # END OF EXAMPLE – remove or replace the steps above with your own   #
-      # ------------------------------------------------------------------ #
