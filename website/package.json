@@ -15,23 +15,23 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "3.6.0",
-    "@docusaurus/preset-classic": "3.6.0",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "daisyui": "^4.4.19",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
+    "@mdx-js/react": "^3.1.1",
+    "clsx": "^2.1.1",
+    "daisyui": "^4.12.24",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.6.0",
-    "@docusaurus/tsconfig": "3.6.0",
-    "@docusaurus/types": "3.6.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.5.10",
-    "tailwindcss": "^3.3.6",
-    "typescript": "~5.2.2"
+    "@docusaurus/module-type-aliases": "3.10.1",
+    "@docusaurus/tsconfig": "3.10.1",
+    "@docusaurus/types": "3.10.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.6.3"
   },
   "browserslist": {
     "production": [
@@ -50,6 +50,11 @@
   },
   "resolutions": {
     "webpack": "5.106.2",
-    "minimatch": "3.1.5"
+    "minimatch": "3.1.5",
+    "js-yaml": "3.14.2",
+    "qs": "6.15.2",
+    "serialize-javascript": "7.0.5",
+    "uuid": "11.1.1",
+    "ws": "7.5.10"
   }
 }
