@@ -93,6 +93,11 @@ jobs:
           STAGE="noi-extensions-${TAG}"
           mkdir -p "${STAGE}"
           cp -R configs extensions prompts locales resources README.md "${STAGE}/"
+          # Ship the helper scripts at the bundle root so users can run them
+          # straight from the extracted folder.
+          cp scripts/install-extensions.sh  "${STAGE}/install-extensions.sh"
+          cp scripts/install-extensions.ps1 "${STAGE}/install-extensions.ps1"
+          chmod +x "${STAGE}/install-extensions.sh"
           # Embed a manifest so consumers know what they got
           cat > "${STAGE}/MANIFEST.json" <<EOF
           {
@@ -100,7 +105,12 @@ jobs:
             "tag": "${TAG}",
             "commit": "${GITHUB_SHA}",
             "built_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "contents": ["configs", "extensions", "prompts", "locales", "resources"]
+            "contents": ["configs", "extensions", "prompts", "locales", "resources"],
+            "installer": {
+              "macos_linux": "install-extensions.sh",
+              "windows": "install-extensions.ps1"
+            },
+            "upstream_app": "https://noib.app"
           }
           EOF
           zip -r "noi-extensions-${TAG}.zip" "${STAGE}"

@@ -6,7 +6,42 @@ A desktop application and web platform for interaction-first AI workflows — le
 
 ---
 
-## 🚀 Quick Start
+## 🧩 Using this fork with the Noi desktop app
+
+This repository is a **content pack** (configs, extensions, prompts, locales, resources) that drops into the upstream [Noi Electron app](https://github.com/lencx/Noi). It does **not** ship the desktop binary itself.
+
+### 1. Install Noi
+Download and install the Noi desktop app from the official site: **<https://noib.app>**. Launch it once so it creates its user-data directory.
+
+### 2. Grab the latest release bundle
+From the [Releases page](https://github.com/iamjairo/Noi-Ai-agent/releases/latest), download one of:
+
+- `noi-extensions-<tag>.zip` (Windows / cross-platform)
+- `noi-extensions-<tag>.tar.gz` (macOS / Linux)
+
+Each bundle includes the content directories plus a `MANIFEST.json` and the two installer scripts described below.
+
+### 3. Apply the pack
+The bundle ships with helper scripts that copy the content into Noi's user-data directory (with a timestamped backup of anything they replace):
+
+| OS              | Command (run from the extracted bundle)         | Default target                              |
+|-----------------|-------------------------------------------------|----------------------------------------------|
+| macOS           | `./install-extensions.sh`                       | `~/Library/Application Support/Noi`         |
+| Linux           | `./install-extensions.sh`                       | `${XDG_CONFIG_HOME:-~/.config}/Noi`         |
+| Windows (PS)    | `./install-extensions.ps1`                      | `%APPDATA%\Noi`                              |
+
+Useful flags:
+- `--dry-run` / `-DryRun` — print actions without writing anything
+- `--target DIR` / `-Target 'C:\path'` — install to a non-default location
+- `--no-backup` / `-NoBackup` — overwrite without keeping a `.bak-<timestamp>` copy
+
+Restart Noi after installing. To roll back, delete the new directories and rename the `.bak-<timestamp>` ones back.
+
+> **Note on the desktop binary.** The Noi Electron app is built and distributed privately by its author from <https://noib.app>; the upstream public repo does not include its source or a license, so this fork cannot legally rebuild or redistribute the app itself. We only ship content you apply on top of an existing Noi install.
+
+---
+
+## 🚀 Developer Quick Start
 
 ### Prerequisites
 - Node.js ≥ 20.0
