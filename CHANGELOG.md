@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/iamjairo/Noi-Ai-agent/compare/noi-ai-agent-tests-v1.1.0...noi-ai-agent-tests-v1.2.0) (2026-05-25)
+
+
+### ✨ Features
+
+* **release:** ship installer scripts + document upstream Noi setup ([37160b1](https://github.com/iamjairo/Noi-Ai-agent/commit/37160b19828254449efa95b57e7f91a4a974eb00))
+
 ## [1.1.0](https://github.com/iamjairo/Noi-Ai-agent/compare/noi-ai-agent-tests-v1.0.0...noi-ai-agent-tests-v1.1.0) (2026-05-25)
 
 
