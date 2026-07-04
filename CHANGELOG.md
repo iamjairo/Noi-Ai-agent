@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.1](https://github.com/iamjairo/Noi-Ai-agent/compare/noi-ai-agent-tests-v1.2.0...noi-ai-agent-tests-v1.2.1) (2026-07-04)
+
+
+### 📦 Dependencies
+
+* **actions:** bump the github-actions-all group across 1 directory with 2 updates ([#29](https://github.com/iamjairo/Noi-Ai-agent/issues/29)) ([13520c6](https://github.com/iamjairo/Noi-Ai-agent/commit/13520c68e37c0d04d2851fb14d8d4e6d5e3742a3))
+* **npm/website:** bump @babel/core from 7.29.0 to 7.29.7 in /website ([#31](https://github.com/iamjairo/Noi-Ai-agent/issues/31)) ([7e78f7c](https://github.com/iamjairo/Noi-Ai-agent/commit/7e78f7c4ccdf112e1b0233d85b62cdc84544b0b5))
+* **npm/website:** bump http-proxy-middleware in /website ([#32](https://github.com/iamjairo/Noi-Ai-agent/issues/32)) ([e055c7f](https://github.com/iamjairo/Noi-Ai-agent/commit/e055c7fa077dbdb32c08841c342fd05383325459))
+* **npm/website:** bump joi from 17.13.3 to 17.13.4 in /website ([#25](https://github.com/iamjairo/Noi-Ai-agent/issues/25)) ([5e0903f](https://github.com/iamjairo/Noi-Ai-agent/commit/5e0903fe7eeec692e032adb173913ee19a329820))
+* **npm/website:** bump launch-editor from 2.13.2 to 2.14.1 in /website ([#27](https://github.com/iamjairo/Noi-Ai-agent/issues/27)) ([c54a69e](https://github.com/iamjairo/Noi-Ai-agent/commit/c54a69e1acf58cf13be3328ab8fc0cc2de575d2d))
+* **npm/website:** bump the website-misc group across 1 directory with 5 updates ([#30](https://github.com/iamjairo/Noi-Ai-agent/issues/30)) ([89078e1](https://github.com/iamjairo/Noi-Ai-agent/commit/89078e1009ea73691ee6b10191f3dbad6a074043))
+* **npm/website:** bump webpack-dev-server in /website ([#33](https://github.com/iamjairo/Noi-Ai-agent/issues/33)) ([652ae33](https://github.com/iamjairo/Noi-Ai-agent/commit/652ae330f6558591e22301690c7160f563d34984))
+
 ## [1.2.0](https://github.com/iamjairo/Noi-Ai-agent/compare/noi-ai-agent-tests-v1.1.0...noi-ai-agent-tests-v1.2.0) (2026-05-25)
 
 
