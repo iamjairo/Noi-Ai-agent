@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/iamjairo/Noi-Ai-agent/compare/noi-ai-agent-tests-v1.2.1...noi-ai-agent-tests-v1.2.2) (2026-07-04)
+
+
+### 📦 Dependencies
+
+* **npm/website:** bump webpack-dev-server in /website ([#35](https://github.com/iamjairo/Noi-Ai-agent/issues/35)) ([3897abb](https://github.com/iamjairo/Noi-Ai-agent/commit/3897abbb1fa03fb3b405cdf892289a3479bd2f6a))
+
 ## [1.2.1](https://github.com/iamjairo/Noi-Ai-agent/compare/noi-ai-agent-tests-v1.2.0...noi-ai-agent-tests-v1.2.1) (2026-07-04)
 
 
